@@ -22,6 +22,8 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
 
     private Bitmap bmpIcon;
 
+    int multiplier;
+
 
     private Drawing drawing;
 
@@ -31,6 +33,9 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
     private int yPos = 0;
     private int deltaX = 5;
     private int deltaY = 5;
+
+
+    boolean running=false;
 
 
     private Thread thread = null;
@@ -68,6 +73,8 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
     private void init() {
 
 
+
+        multiplier=1;
         //setLayerType(android.view.View.LAYER_TYPE_SOFTWARE, null);
         surfaceHolder = getHolder();
 
@@ -93,8 +100,6 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
 
             }
         });*/
-
-
 
 
     }
@@ -159,7 +164,9 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
                 int h = canvas.getHeight();
                 int left = Math.round(w / 2);
                 int top = Math.round(h / 2);
-                int right = 200;
+
+                multiplier=multiplier+10;
+                int right = 200+multiplier;
                 int bottom = 200;
 
                 int r = random.nextInt(255);
@@ -168,7 +175,10 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
                 paint.setColor(0xff000000 + (r << 16) + (g << 8) + b);
                 canvas.drawRect(new Rect(left, top, right, bottom), paint);
 
+
                 surfaceHolder.unlockCanvasAndPost(canvas);
+
+                running=false;
             }
         }
 
@@ -230,30 +240,34 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
 
     @Override
     public void run() {
-        if (drawing != null) {
 
 
-            switch (drawing) {
-
-                case BITMAP:
-                    break;
+        while (running) {
+            if (drawing != null) {
 
 
-                case RECT:
-                    drawRectShape();
-                    break;
+                switch (drawing) {
 
-                case OVAL:
-                    break;
+                    case BITMAP:
+                        break;
 
 
-                case ARC:
-                    break;
+                    case RECT:
+                        drawRectShape();
+                        break;
+
+                    case OVAL:
+                        break;
+
+
+                    case ARC:
+                        break;
+
+
+                }
 
 
             }
-
-
         }
     }
 
@@ -263,6 +277,8 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
 
         this.drawing = drawing;
 
+
+        running=true;
 
         if (surfaceHolder.isCreating()) {
 
@@ -302,7 +318,7 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        this.surfaceHolder=holder;
+        this.surfaceHolder = holder;
 
     }
 
