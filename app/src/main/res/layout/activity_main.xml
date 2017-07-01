@@ -9,7 +9,7 @@
     tools:context="com.talhahasanzia.lushgenerator.MainActivity">
 
 
-<com.talhahasanzia.lushgenerator.MySurfaceView
+<com.talhahasanzia.lushgenerator.LushSurfaceView
     android:id="@+id/my_surface_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
