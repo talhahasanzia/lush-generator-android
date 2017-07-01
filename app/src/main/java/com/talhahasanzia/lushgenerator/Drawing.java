@@ -11,5 +11,7 @@ public enum Drawing {
     ARC,
     OVAL,
     CIRCLE,
-    LINES
+    LINES,
+    LINE,
+    TRIANGLE
 }
