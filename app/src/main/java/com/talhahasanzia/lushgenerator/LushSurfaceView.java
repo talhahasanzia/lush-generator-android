@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.support.v4.app.ActivityCompat;
@@ -35,7 +36,7 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
     private int deltaY = 5;
 
 
-    boolean running=false;
+    boolean running = false;
 
 
     private Thread thread = null;
@@ -73,19 +74,24 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
     private void init() {
 
 
-
-        multiplier=1;
+        multiplier = 1;
         //setLayerType(android.view.View.LAYER_TYPE_SOFTWARE, null);
         surfaceHolder = getHolder();
 
 
-      /*  surfaceHolder.addCallback(new SurfaceHolder.Callback() {
+        setZOrderOnTop(true);
+
+
+        surfaceHolder.setFormat(PixelFormat.TRANSPARENT);
+
+
+       /* surfaceHolder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
 
                 Canvas canvas = holder.lockCanvas();
 
-                canvas.drawARGB(255, 255, 255, 255);
+             //   canvas.drawARGB(0, 255, 255, 255);
 
                 holder.unlockCanvasAndPost(canvas);
             }
@@ -99,8 +105,8 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
             public void surfaceDestroyed(SurfaceHolder holder) {
 
             }
-        });*/
-
+        });
+*/
 
     }
 
@@ -165,8 +171,8 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
                 int left = Math.round(w / 2);
                 int top = Math.round(h / 2);
 
-                multiplier=multiplier+10;
-                int right = 200+multiplier;
+                multiplier = multiplier + 10;
+                int right = 200 + multiplier;
                 int bottom = 200;
 
                 int r = random.nextInt(255);
@@ -178,7 +184,7 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
 
                 surfaceHolder.unlockCanvasAndPost(canvas);
 
-                running=false;
+                running = false;
             }
         }
 
@@ -278,7 +284,7 @@ public class LushSurfaceView extends SurfaceView implements Runnable, SurfaceHol
         this.drawing = drawing;
 
 
-        running=true;
+        running = true;
 
         if (surfaceHolder.isCreating()) {
 

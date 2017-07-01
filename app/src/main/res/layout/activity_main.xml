@@ -6,12 +6,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context="com.talhahasanzia.lushgenerator.MainActivity">
 
 
 <com.talhahasanzia.lushgenerator.LushSurfaceView
     android:id="@+id/my_surface_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    />
+
+    <LinearLayout
+        android:paddingBottom="2dp"
+        android:paddingTop="3dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <Button
+            android:id="@+id/rect"
+            android:text="Rect"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <Button
+            android:text="oval"
+            android:id="@+id/oval"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <Button
+            android:text="Arc"
+            android:id="@+id/arc"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <Button
+            android:text="Circle"
+            android:id="@+id/circle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <Button
+            android:text="Lines"
+            android:id="@+id/lines"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </LinearLayout>

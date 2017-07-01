@@ -9,5 +9,7 @@ public enum Drawing {
     BITMAP,
     RECT,
     ARC,
-    OVAL
+    OVAL,
+    CIRCLE,
+    LINES
 }
